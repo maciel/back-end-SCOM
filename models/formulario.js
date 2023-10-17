@@ -7,17 +7,21 @@ const sequelize = new Sequelize('trabalhodescom', 'root', '99101lucas', {
 })
 
 const Formulario = sequelize.define('formulario', {
-  nomeFormulario: {
+  id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
+  nomeFormulario: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   emailFormulario: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  opniao: {
+  opiniao: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true,

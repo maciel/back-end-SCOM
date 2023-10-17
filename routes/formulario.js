@@ -7,11 +7,11 @@ router.post('/', async (req, res) => {
         const resposta = await Formulario.create({
             nomeFormulario: req.body.nome,
             emailFormulario: req.body.email,
-            opniao: req.body.opiniao,
+            opiniao: req.body.opiniao,
         })
         res.status(200).send("deu certo")
     } catch (err) {
-        res.status(500).json({ erro: 'Erro ao enviar o formulario.' });
+        res.status(500).json({ erro: 'Erro ao enviar o formulario. ' + err });
     }
 })
 
