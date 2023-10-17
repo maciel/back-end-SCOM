@@ -11,10 +11,14 @@ app.use(bodyParser.json());
 //Carregar rotas
 const cadastro = require('./routes/cadastro')
 const login = require('./routes/login')
+const auth = require('./routes/authController')
+const project = require('./routes/projectController')
 
 //Usar rotas
 app.use('/cadastro', cadastro)
 app.use('/login', login)
+app.use('/authController', auth)
+app.use('/projectController', project)
 
 app.listen(PORT, () => {
   console.log(`Servidor Node.js em execução na porta ${PORT}`);
