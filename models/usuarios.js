@@ -1,33 +1,33 @@
-const Sequelize = require('sequelize')
-//Conexão com o banco de dados MySql
-const sequelize = new Sequelize('user', 'root', 'X', {
-    host: "localhost",
-    dialect: 'mysql',
+const db = require('../config/db')
 
-})
 
-const User = sequelize.define('user', {
+
+const User = db.sequelize.define('user', {
   id: {
-    type: Sequelize.INTEGER,
+    type: db.Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
   nome: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
   email: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
     unique: true,
   },
   senha: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
+  nivel: {
+    type: db.Sequelize.INTEGER,
+    allowNull: true
+  }
 },
   { timestamps: false, freezeTableName: true });
 
-//   User.sync({force: true})
+  // User.sync({force: true})
 module.exports = User;
