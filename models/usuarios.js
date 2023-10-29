@@ -1,10 +1,11 @@
-const Sequelize = require('sequelize')
-//Conexão com o banco de dados MySql
-const sequelize = new Sequelize('user', 'root', 'X', {
-    host: "localhost",
-    dialect: 'mysql',
+const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
-})
+// Conexão com o banco de dados MySql
+const sequelize = new Sequelize('user', 'root', 'Lpt15102002', {
+  host: 'localhost',
+  dialect: 'mysql',
+});
 
 const User = sequelize.define('user', {
   id: {
@@ -26,8 +27,15 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-},
-  { timestamps: false, freezeTableName: true });
+}, { timestamps: false, freezeTableName: true });
 
-//   User.sync({force: true})
+// Adicione um gancho (hook) para criptografar a senha antes de salvar
+User.beforeCreate(async (user, options) => {
+  const saltRounds = 10; // Nível de força da criptografia (ajuste conforme necessário)
+  user.senha = await bcrypt.hash(user.senha, saltRounds);
+});
+
+// Sincronize o modelo com o banco de dados
+User.sync({ force: true });
+
 module.exports = User;
