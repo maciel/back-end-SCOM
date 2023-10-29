@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
             emailFormulario: req.body.email,
             opiniao: req.body.opiniao,
         })
-        res.status(200).send("deu certo")
+        res.status(200).send(resposta)
     } catch (err) {
         res.status(500).json({ erro: 'Erro ao enviar o formulario. ' + err });
     }

@@ -1,28 +1,22 @@
-const Sequelize = require('sequelize')
-//Conexão com o banco de dados MySql
-const sequelize = new Sequelize('trabalhodescom', 'root', '99101lucas', {
-    host: "localhost",
-    dialect: 'mysql',
+const db = require('../config/db')
 
-})
-
-const Formulario = sequelize.define('formulario', {
+const Formulario = db.sequelize.define('formulario', {
   id: {
-    type: Sequelize.INTEGER,
+    type: db.Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
   nomeFormulario: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
   emailFormulario: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
   opiniao: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
     unique: true,
   }});

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 
@@ -6,25 +7,30 @@ const sequelize = new Sequelize('user', 'root', 'Lpt15102002', {
   host: 'localhost',
   dialect: 'mysql',
 });
+=======
+const db = require('../config/db')
 
-const User = sequelize.define('user', {
+>>>>>>> d0e55ce2ce1cf7520fc385f84559f2dcc3d4ad9f
+
+
+const User = db.sequelize.define('user', {
   id: {
-    type: Sequelize.INTEGER,
+    type: db.Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
     primaryKey: true,
   },
   nome: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
   email: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
     unique: true,
   },
   senha: {
-    type: Sequelize.STRING,
+    type: db.Sequelize.STRING,
     allowNull: false,
   },
 }, { timestamps: false, freezeTableName: true });
