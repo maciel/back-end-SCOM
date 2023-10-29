@@ -1,16 +1,4 @@
-<<<<<<< HEAD
-const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
-
-// Conexão com o banco de dados MySql
-const sequelize = new Sequelize('user', 'root', 'Lpt15102002', {
-  host: 'localhost',
-  dialect: 'mysql',
-});
-=======
 const db = require('../config/db')
-
->>>>>>> d0e55ce2ce1cf7520fc385f84559f2dcc3d4ad9f
 
 
 const User = db.sequelize.define('user', {
