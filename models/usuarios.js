@@ -1,5 +1,5 @@
 const db = require('../config/db')
-
+const bcrypt = require('bcrypt');
 
 
 const User = db.sequelize.define('user', {
@@ -22,12 +22,13 @@ const User = db.sequelize.define('user', {
     type: db.Sequelize.STRING,
     allowNull: false,
   },
-  nivel: {
-    type: db.Sequelize.INTEGER,
-    allowNull: true
-  }
+ 
 },
   { timestamps: false, freezeTableName: true });
+User.beforeCreate(async (user, options) => {
+  const saltRounds = 10; 
+  user.senha = await bcrypt.hash(user.senha, saltRounds);
+});
 
-  // User.sync({force: true})
+// User.sync({force: true})
 module.exports = User;
