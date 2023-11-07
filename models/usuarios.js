@@ -1,7 +1,6 @@
 const db = require('../config/db')
 const bcrypt = require('bcrypt');
 
-
 const User = db.sequelize.define('user', {
   id: {
     type: db.Sequelize.INTEGER,
