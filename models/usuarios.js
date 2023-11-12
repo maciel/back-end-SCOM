@@ -30,6 +30,6 @@ User.beforeCreate(async (user, options) => {
 });
 
 // Sincronize o modelo com o banco de dados
-User.sync({ force: true });
+// User.sync({ force: true });
 
 module.exports = User;

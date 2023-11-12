@@ -15,6 +15,8 @@ const auth = require('./routes/authController')
 const project = require('./routes/projectController')
 const forms = require('./routes/formulario')
 const imagem = require('./routes/imagens')
+const entrada = require('./routes/entrada')
+const saida = require('./routes/saida')
 
 //Usar rotas
 app.use('/cadastro', cadastro)
@@ -23,6 +25,9 @@ app.use('/authController', auth)
 app.use('/projectController', project)
 app.use("/formulario", forms)
 app.use('/imagens', imagem)
+app.use('/saida', saida)
+app.use('/entrada', entrada)
+
 
 app.listen(PORT, () => {
   console.log(`Servidor Node.js em execução na porta ${PORT}`);
