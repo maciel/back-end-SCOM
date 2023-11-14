@@ -1,5 +1,5 @@
 const db = require('../config/db')
-
+const bcrypt = require('bcrypt');
 
 const User = db.sequelize.define('user', {
   id: {
@@ -21,15 +21,13 @@ const User = db.sequelize.define('user', {
     type: db.Sequelize.STRING,
     allowNull: false,
   },
-}, { timestamps: false, freezeTableName: true });
-
-// Adicione um gancho (hook) para criptografar a senha antes de salvar
+ 
+},
+  { timestamps: false, freezeTableName: true });
 User.beforeCreate(async (user, options) => {
-  const saltRounds = 10; // Nível de força da criptografia (ajuste conforme necessário)
+  const saltRounds = 10; 
   user.senha = await bcrypt.hash(user.senha, saltRounds);
 });
 
-// Sincronize o modelo com o banco de dados
-// User.sync({ force: true });
-
+// User.sync({force: true})
 module.exports = User;

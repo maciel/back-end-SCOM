@@ -17,6 +17,7 @@ const forms = require('./routes/formulario')
 const imagem = require('./routes/imagens')
 const entrada = require('./routes/entrada')
 const saida = require('./routes/saida')
+const retorno = require('./routes/retorno')
 
 //Usar rotas
 app.use('/cadastro', cadastro)
@@ -27,6 +28,7 @@ app.use("/formulario", forms)
 app.use('/imagens', imagem)
 app.use('/saida', saida)
 app.use('/entrada', entrada)
+app.use('/retorno', retorno)
 
 
 app.listen(PORT, () => {
